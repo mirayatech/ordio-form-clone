@@ -19,6 +19,7 @@ export default function Form() {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState<Errors>({});
+  const [shake, setShake] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +52,11 @@ export default function Form() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+      return;
+    }
 
     if (isSignUp) {
       console.log("User signed up:", formData);
@@ -64,7 +69,9 @@ export default function Form() {
 
   return (
     <form
-      className="w-[350px] bg-white px-8 py-6 pb-4 border rounded-lg shadow-sm"
+      className={`w-[350px] bg-white px-8 py-6 pb-4 border rounded-lg shadow-sm ${
+        shake ? "animate-shake" : ""
+      }`}
       onSubmit={handleSubmit}
     >
       <div className="flex flex-col items-center gap-4">
