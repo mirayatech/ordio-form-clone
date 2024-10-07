@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { cn } from "../lib/utils";
 
 type ButtonProps = ComponentProps<"button"> & {
   isLoading?: boolean;
