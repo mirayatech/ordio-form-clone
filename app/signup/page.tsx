@@ -4,6 +4,13 @@ import { InputField } from "@/app/components/input";
 import { Button } from "@/app/components/button";
 import { useState } from "react";
 
+type FormState = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+// just to simulate a request happening
 // function mockLogin(formState: typeof formState) {
 //   return new Promise((resolve) => {
 //     setTimeout(() => {

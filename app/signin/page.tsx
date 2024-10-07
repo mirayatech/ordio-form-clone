@@ -4,7 +4,12 @@ import { InputField } from "@/app/components/input";
 import { Button } from "@/app/components/button";
 import { useState } from "react";
 
-function mockLogin(formState: typeof formState) {
+type FormState = {
+  email: string;
+  password: string;
+};
+
+function mockLogin(formState: FormState) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(formState);
@@ -20,13 +25,11 @@ export default function SignIn() {
   const [formErrors, setFormErrors] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [formState, setFormState] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
