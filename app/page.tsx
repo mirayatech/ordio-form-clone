@@ -1,8 +1,8 @@
 "use client";
-import { InputField } from "@/app/components/input";
-import { Button } from "@/app/components/button";
+
 import { useState } from "react";
 import { cn } from "./lib/utils";
+import { ToggleButton, InputField, Button } from "./components";
 
 type FormState = {
   email: string;
@@ -92,24 +92,7 @@ export default function Page() {
           {mode === "signup" ? "Sign up" : "Sign in"}
         </h1>
 
-        <div className="w-60 mx-auto flex justify-center rounded-full p-1 bg-zinc-100 ">
-          <button
-            onClick={() => setMode("signup")}
-            className={cn("rounded-full w-full p-1 text-xs", {
-              "bg-white": mode === "signup",
-            })}
-          >
-            Sign Up
-          </button>
-          <button
-            onClick={() => setMode("login")}
-            className={cn("w-full rounded-full w- p-1 text-xs", {
-              "bg-white": mode === "login",
-            })}
-          >
-            Login
-          </button>
-        </div>
+        <ToggleButton onToggle={setMode} />
 
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
           <InputField
