@@ -5,8 +5,6 @@ type ButtonProps = ComponentProps<"button"> & {
   isLoading?: boolean;
 };
 
-// cva
-
 export function Button({
   isLoading,
   children,
@@ -14,10 +12,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button
-      {...props}
-      className={cn("border w-full px-3 py-2 rounded", className)}
-    >
+    <button {...props} className={cn("border w-full px-3 py-2", className)}>
       {isLoading ? "Loading..." : children}
     </button>
   );
